@@ -18,14 +18,17 @@ app.post('/test', function (req, res) {
     var answ = one+two;
     var check;
     var checkID;
+    var cssSet;
     if (answ==req.body.answ){
         check = "Правильно!"
         checkID= true;
+        cssSet= "truetype";
     } else{
         check = "Не верно!"
+        cssSet = "falsetype";
         checkID = false;
     }
-    res.send({'check':check, 'checkID':checkID});
+    res.send({'check':check, 'checkID':checkID, 'cssSet':cssSet});
   });
 
 }

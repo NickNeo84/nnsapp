@@ -1,3 +1,5 @@
 export class Resp{
-    num: number;
+    check: string;
+    checkID: boolean;
+    cssSet: string;
 }
