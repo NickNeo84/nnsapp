@@ -1,0 +1,39 @@
+.leftmargin{
+    margin: 10px;
+}
+
+.truetype{
+    color: darkgreen;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.falsetype{
+    color: #e61d1d;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.radio-class{
+    font-size: 18px;
+}
+
+.statistics{
+    color: rgb(7, 206, 139);
+    font-weight: 500;
+    display: inline;
+}
+
+.inlineBlock{
+    display: inline-block;
+    width: 45%;
+}
+
+.widthBlock{
+    width: 45%;
+}
+
+.numeric{
+    color: #0e0ec9;
+    display: inline;
+}

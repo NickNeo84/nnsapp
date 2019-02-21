@@ -1,0 +1,30 @@
+.colomNum{
+    display: inline-block;
+    width: 30%;
+}
+
+.unit{
+    color: blue;
+    font-weight: 500;
+    display: inline;
+}
+
+.decades{
+    color: darkgreen;
+    font-weight: 500;
+    display: inline;
+}
+
+.hundreds{
+    color: gold;
+    font-weight: 500;
+    display: inline;
+}
+
+.leftMarg{
+    margin-left: 20px;
+}
+
+.sizeNum{
+    font-size: large;
+}
