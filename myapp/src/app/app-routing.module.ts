@@ -12,8 +12,8 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { path: 'login', component: LoginComponent },
-  { path: 'quest', component: QuestComponent, canActivate: [AuthGuard] },
-  { path: 'rules', component: RulesComponent, canActivate: [AuthGuard] },
+  { path: 'quest', component: QuestComponent },
+  { path: 'rules', component: RulesComponent },
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
   ];
