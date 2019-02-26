@@ -65,7 +65,6 @@ export class QuestComponent implements OnInit {
   }
 
   ngOnInit() {
-    
   }
 
 }

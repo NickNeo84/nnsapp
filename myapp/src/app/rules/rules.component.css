@@ -3,22 +3,24 @@
     width: 30%;
 }
 
+.textPos{
+    text-align: center;
+    font-size: 25px;
+}
+
 .unit{
     color: blue;
     font-weight: 500;
-    display: inline;
 }
 
 .decades{
     color: darkgreen;
     font-weight: 500;
-    display: inline;
 }
 
 .hundreds{
     color: gold;
     font-weight: 500;
-    display: inline;
 }
 
 .leftMarg{
@@ -28,3 +30,29 @@
 .sizeNum{
     font-size: large;
 }
+
+.lineFild{
+    display: inline;
+}
+
+.splitLine{
+    border-bottom: 2px solid #000000; /* Параметры линии под текстом */
+    font-weight: normal; /* Убираем жирное начертание */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.sizeExample{
+    font-size: 40px;
+    font-weight: 600;
+}
+
+hr {
+    margin-bottom: 0px;
+    margin-top: 0px;
+    border: none; /* Убираем границу */
+    background-color: #000000; /* Цвет линии */
+    height: 3px; /* Толщина линии */
+    width: 80px;
+    font-size: 5px;
+   }
