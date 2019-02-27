@@ -1,15 +1,13 @@
+require('rootpath')();
 const express = require('express');
 path = require('path');
 
 const app = express();
 
 
-app.get('./quest*', (req,res) =>{
-    console.log('work1');
-});
+
 
  app.use(express.static('./dist/myapp'));
-// app.use(express.static('./resources'));
 
 
 require('./inputPost')(app);

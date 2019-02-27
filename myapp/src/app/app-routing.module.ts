@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {RulesComponent} from './rules/rules.component';
+import {RulesComponent} from './rulesSum/rules.component';
 import {QuestComponent} from './quest/quest.component';
 import { LoginComponent } from './login';
 import { AuthGuard } from './_guards';
@@ -12,8 +12,8 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { path: 'login', component: LoginComponent },
-  { path: 'quest', component: QuestComponent },
-  { path: 'rules', component: RulesComponent },
+  { path: 'quest', component: QuestComponent, canActivate: [AuthGuard] },
+  { path: 'rules', component: RulesComponent, canActivate: [AuthGuard] },
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
   ];

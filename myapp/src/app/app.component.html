@@ -1,49 +1,19 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark">
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/quest">
+  <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+    Домой
+  </a>
+  <a class="navbar-brand" href="#" (click)="logout()">
+    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+    Выход
+  </a>
+</nav>
+
+<!-- <nav class="navbar navbar-expand navbar-dark bg-dark">
   <div class="navbar-nav">
       <a class="nav-item nav-link" routerLink="/quest">Домой</a>
       <a class="nav-item nav-link" (click)="logout()">Выход</a>
   </div>
-</nav>
-<!--The content below is only a placeholder and can be replaced.-->
-<!-- <div style="text-align:center">
-  <h1>
-    Привет Шустрый Искатель!
-  </h1>
-</div>
-
-<div>
-  <label class="checkbox-inline radio-class">
-    <input type="radio" name="inlineRadioOptions" value="2" (click)="setNumber(2)" checked> 2 знака
-  </label>
-  <label class="checkbox-inline radio-class">
-    <input type="radio" name="inlineRadioOptions" value="3" (click)="setNumber(3)"> 3 знака
-  </label>
-</div>
-
-<div class="leftmargin inlineBlock">
-  <h2>{{sign}} <p class="numeric">{{firstNumber}}</p> и <p class="numeric">{{secondNumber}}</p> </h2>
-</div>
-
-<div class="inlineBlock">
-  <h2>Правильных ответов: <p class="statistics">{{statistics}}</p></h2>
-</div>
-
-<div>
-  <form>
-    <div class="form-group leftmargin">
-        <label>Ответ</label>
-        <input #inp type="number" class="form-control" name="answer" [(ngModel)]="answ.num" />
-    </div>
-    <div class="form-group leftmargin">
-        <button type="submit" class="btn btn-default" (click)="answer(answ,firstNumber,secondNumber)">Отправить</button>
-    </div>
-
-    <div *ngIf="done">
-        <div class={{receivedResp.cssSet}}>Ответ: {{receivedResp.check}}</div>
-    </div>
-  </form>
-</div>
-
-<a routerLink="/rules">Правила сложения и вычитания</a> -->
+</nav> -->
 
 <router-outlet></router-outlet>

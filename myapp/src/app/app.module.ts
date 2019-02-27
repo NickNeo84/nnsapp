@@ -4,13 +4,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS  }   from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { RulesComponent } from './rules/rules.component';
+import { RulesComponent } from './rulesSum/rules.component';
 import { QuestComponent } from './quest/quest.component';
 import { LoginComponent } from './login/login.component';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 
 // used to create fake backend
-import { fakeBackendProvider } from './_helpers';
+// import { fakeBackendProvider } from './_helpers';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,8 @@ import { fakeBackendProvider } from './_helpers';
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
     // provider used to create fake backend
-    fakeBackendProvider],
+    // fakeBackendProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
-.leftmargin{
-    margin: 10px;
+.marginBlock{
+    margin: 20px;
 }
 
 .truetype{
@@ -24,9 +24,18 @@
     display: inline;
 }
 
-.inlineBlock{
+.inlineBlockLeft{
     display: inline-block;
-    width: 45%;
+    width: auto;
+    margin-left: 20px;
+    float: left;
+}
+
+.inlineBlockRigth{
+    display: inline-block;
+    width: auto;
+    margin-right: 20px;
+    float: right;
 }
 
 .widthBlock{
@@ -36,4 +45,8 @@
 .numeric{
     color: #0e0ec9;
     display: inline;
+}
+
+.newRow{
+    clear: both;
 }

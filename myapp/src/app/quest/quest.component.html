@@ -6,6 +6,21 @@
 
 <div>
   <label class="checkbox-inline radio-class">
+    <input type="radio" name="inlineRadioSing" value="1" (click)="setSign(1)" checked> Сложение
+  </label>
+  <label class="checkbox-inline radio-class">
+    <input type="radio" name="inlineRadioSing" value="2" (click)="setSign(2)"> Вычитание
+  </label>
+  <label class="checkbox-inline radio-class">
+    <input type="radio" name="inlineRadioSing" value="3" (click)="setSign(3)"> Умножение
+  </label>
+  <label class="checkbox-inline radio-class">
+    <input type="radio" name="inlineRadioSing" value="4" (click)="setSign(4)"> Деление
+  </label>
+</div>
+
+<div>
+  <label class="checkbox-inline radio-class">
     <input type="radio" name="inlineRadioOptions" value="2" (click)="setNumber(2)" checked> 2 знака
   </label>
   <label class="checkbox-inline radio-class">
@@ -13,22 +28,23 @@
   </label>
 </div>
 
-<div class="leftmargin inlineBlock">
+
+<div class="marginBlock inlineBlockLeft">
   <h2>{{sign}} <p class="numeric">{{firstNumber}}</p> и <p class="numeric">{{secondNumber}}</p> </h2>
 </div>
 
-<div class="inlineBlock">
+<div class="marginBlock inlineBlockRigth">
   <h2>Правильных ответов: <p class="statistics">{{statistics}}</p></h2>
 </div>
 
-<div>
+<div class="newRow">
   <form>
-    <div class="form-group leftmargin">
+    <div class="form-group marginBlock">
         <label>Ответ</label>
         <input #inp type="number" class="form-control" name="answer" [(ngModel)]="answ.num" />
     </div>
-    <div class="form-group leftmargin">
-        <button type="submit" class="btn btn-default" (click)="answer(answ,firstNumber,secondNumber)">Отправить</button>
+    <div class="form-group marginBlock">
+        <button [disabled]="!butAvailable" type="submit" class="btn btn-default" (click)="answer(answ,firstNumber,secondNumber)">Отправить</button>
     </div>
 
     <div *ngIf="done">
