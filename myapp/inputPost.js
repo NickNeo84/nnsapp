@@ -95,6 +95,6 @@ app.post('/test', function (req, res) {
     
 
     console.log(textNumber);
-        res.send({'text':textNumber});
+        res.send({'num':textNumber});
       });   
 }

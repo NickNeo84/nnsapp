@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import {HttpService} from '../http.service';
+import {Answ} from '../answ';
 
 @Component({
   selector: 'app-numbers',
@@ -15,7 +16,7 @@ export class NumbersComponent implements OnInit {
   receivedResp: string;
   butAvailable: boolean = true;
   receivedCss: string;
-  textNumber: object = {text:""};
+  textNumber: Answ = {'num':""};
 
   myForm : FormGroup = new FormGroup({             
     answer: new FormControl()
@@ -25,7 +26,7 @@ export class NumbersComponent implements OnInit {
 
   getTextNum(num: number){
     console.log(this.number);
-    this.http.postTextNumber(num).subscribe(value =>{
+    this.http.postTextNumber(num).subscribe((value: Answ) =>{
        this.textNumber = value;
     })
   }
