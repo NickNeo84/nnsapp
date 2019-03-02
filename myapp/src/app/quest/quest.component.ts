@@ -61,27 +61,17 @@ export class QuestComponent implements OnInit {
     this.httpService.postData(answ, one, two)
             .subscribe(
                 (data: Resp) => {
-                  this.receivedResp=data; this.done=true;
-                      setTimeout(()=>{
-                        if (this.receivedResp.checkID){ 
-                          //если правильно то новое задание
-                          this.setNumber(this.userSingCom);
-                          this.statistics += 1;
-                        }else {
-                          //если не верно то стираем ответ
-                          null;
-                        };
-                          this.answ.num = null;
-                          this.done = false;
-                          this.focusFild();
-                          this.butAvailable = true;
-                        },3000,[]);
-                        
+                  this.receivedResp=data; 
+                  this.done=true;
+                  this.timeoutFunc(3000);                        
                 },
                 error => console.log(error)
             );
      } else if (this.signId == 2){
-      console.log('userSign')
+      this.receivedResp = this.checkSub(one, two, answ.num);
+      // console.log( this.receivedResp );
+      this.done=true;
+      this.timeoutFunc(3000);
      }         
   };
 
@@ -89,6 +79,46 @@ export class QuestComponent implements OnInit {
   focusFild(): void {
     this.nameField.nativeElement.focus();
   }
+
+  checkSub(num1: number, num2: number, answ: string){
+    var resp: Resp = new Resp;
+    var answSub: number = num1-num2;  
+    var answUser: number = +answ;
+  // console.log(resp);
+    this.checkAnsw(answSub, answUser, resp);
+  // console.log(resp);
+    return resp;
+  }
+
+  checkAnsw(first: number, second: number, resp: Resp){
+
+    if(first == second){
+      resp.check = "Правильно!";
+      resp.checkID = true;
+      resp.cssSet = "truetype";
+    } else{
+      resp.check = "Не верно!";
+      resp.checkID = false;
+      resp.cssSet = "falsetype";
+    }
+  }
+
+ timeoutFunc(time: number){
+  setTimeout(()=>{
+    if (this.receivedResp.checkID){ 
+      //если правильно то новое задание
+      this.setNumber(this.userSingCom);
+      this.statistics += 1;
+    }else {
+      //если не верно то стираем ответ
+      null;
+    };
+      this.answ.num = null;
+      this.done = false;
+      this.focusFild();
+      this.butAvailable = true;
+    },time,[]);
+ }
 
   ngOnInit() {
   }

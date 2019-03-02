@@ -1,0 +1,20 @@
+<div style="text-align:center ">
+    <h1>
+      Привет Шустрый Искатель!
+    </h1>
+  </div>
+<div>
+    <h2 class="inline">Напиши число: </h2> <p class="numberText"> {{textNumber.text}}</p> 
+</div>
+
+<div class="form-group marginBlock">
+  <form [formGroup]="myForm" >
+    <input #answ name="name" formControlName="answer" />
+    <button [disabled]="!butAvailable" type="submit" class="btn btn-default" (click)= "anewer(answ.value)">Ответить</button>
+
+    <div *ngIf="done">
+        <div [class]="receivedCss">Ответ: {{receivedResp}}</div>
+    </div>
+  </form> 
+</div>
+

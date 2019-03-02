@@ -8,6 +8,7 @@ import { RulesComponent } from './rulesSum/rules.component';
 import { QuestComponent } from './quest/quest.component';
 import { LoginComponent } from './login/login.component';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { NumbersComponent } from './numbers/numbers.component';
 
 // used to create fake backend
 // import { fakeBackendProvider } from './_helpers';
@@ -17,7 +18,8 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
     AppComponent,
     RulesComponent,
     QuestComponent,
-    LoginComponent
+    LoginComponent,
+    NumbersComponent
   ],
   imports: [
     BrowserModule,

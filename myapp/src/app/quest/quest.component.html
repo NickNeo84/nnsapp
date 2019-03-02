@@ -9,7 +9,7 @@
     <input type="radio" name="inlineRadioSing" value="1" (click)="setSign(1)" checked> Сложение
   </label>
   <label class="checkbox-inline radio-class">
-    <input type="radio" name="inlineRadioSing" value="2" (click)="setSign(2)"> Вычитание
+    <input type="radio" name="inlineRadioSing" value="2" (click)="setSign($event.target.value)"> Вычитание
   </label>
   <label class="checkbox-inline radio-class">
     <input type="radio" name="inlineRadioSing" value="3" (click)="setSign(3)"> Умножение
@@ -48,9 +48,10 @@
     </div>
 
     <div *ngIf="done">
-        <div class={{receivedResp.cssSet}}>Ответ: {{receivedResp.check}}</div>
+        <div [class]="receivedResp.cssSet">Ответ: {{receivedResp.check}}</div>
     </div>
   </form>
 </div>
 
 <a routerLink="/rules">Правила сложения и вычитания</a>
+<a routerLink="/numbers">Учим числа</a>

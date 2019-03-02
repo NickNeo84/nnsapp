@@ -8,7 +8,7 @@ var mysql = require('mysql');
 
 // var con = mysql.createConnection({
 //     host: "us-cdbr-iron-east-03.cleardb.net",
-//     user: "",
+//     user: "b4f35e762df736",
 //     password: "",
 //     database: "heroku_b228b13b156e0e9"
 //   });
@@ -16,7 +16,7 @@ var mysql = require('mysql');
 
 //   con.connect(function(err) {
 //     if (err) throw err;
-//     con.query("SELECT * FROM new_table", function (err, result, fields) {
+//     con.query("SELECT * FROM users", function (err, result, fields) {
 //       if (err) throw err;
 //       console.log(result);
 //     });

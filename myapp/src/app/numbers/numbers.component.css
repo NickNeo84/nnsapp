@@ -1,0 +1,30 @@
+.newRow{
+    clear: both;
+}
+
+.marginBlock{
+    margin: 20px;
+}
+
+.truetype{
+    color: #17e917;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.falsetype{
+    color: #e61d1d;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.numberText{
+    display: inline;
+    font-size: 35px;
+    font-weight: 500;
+    color: rgb(62, 24, 230);
+}
+
+.inline{
+    display: inline;
+}

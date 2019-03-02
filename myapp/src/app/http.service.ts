@@ -13,4 +13,14 @@ export class HttpService{
         // console.log(body);
         return this.http.post('/test', body); 
     }
+
+    postNumber(num: number){
+        const body = {'num': num};
+        return this.http.post('/num', body);
+    }
+
+    postTextNumber(num: number){
+        const body = {'num':num};
+        return this.http.post('/textNum', body);
+    }
 }
