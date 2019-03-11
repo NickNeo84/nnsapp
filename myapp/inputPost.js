@@ -6,6 +6,8 @@ const errorHandler = require('_helpers/error-handler');
 const parseNumber = require('_helpers/parse-number');
 var numbersText = require('./numbers.json');
 
+var query = require('./_helpers/conectDB').query;
+
 module.exports = function (app) {
 
 
@@ -26,23 +28,37 @@ app.use('/users', require('./users/users.controller'));
 app.use(errorHandler);
 
 app.post('/test', function (req, res) {
-//    console.log(req.body);
+    // console.log(req.user.sub);
     var one = req.body.one;
     var two = req.body.two;
     var answ = one+two;
     var check;
     var checkID;
     var cssSet;
+    var user = req.user.sub;
+
     if (answ==req.body.answ){
         check = "Правильно!";
         checkID= true;
-        cssSet= "truetype";
+        cssSet= "truetype";        
     } else{
         check = "Не верно!";
         cssSet = "falsetype";
         checkID = false;
     }
-    res.send({'check':check, 'checkID':checkID, 'cssSet':cssSet});
+    
+    query('select points from users where id = ?', [user]).then(function (result) {
+        // здесь код будет выполнятся после запроса
+        // console.log('Result');
+        // console.log(result);
+        var point = result[0].points;
+        res.send({'check':check, 'checkID':checkID, 'cssSet':cssSet, 'points':point});
+    }).catch(function (err) {
+        // здесь будет сообщение об ошибке
+        console.log('Error');
+        console.log(err);
+    });
+
   });
 
   app.post('/num', function (req, res) {
