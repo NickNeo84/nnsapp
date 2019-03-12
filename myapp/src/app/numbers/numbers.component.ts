@@ -36,7 +36,8 @@ export class NumbersComponent implements OnInit {
     this.http.postNumber(num).subscribe(value =>{
       if(+value == this.number){
         this.receivedResp = "Правильно!";
-        this.receivedCss = "truetype";       
+        this.receivedCss = "truetype"; 
+        this.http.setPoints(5);   
       } else{
         this.receivedResp = "Не верно!";
         this.receivedCss = "falsetype";  

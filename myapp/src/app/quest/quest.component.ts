@@ -20,6 +20,7 @@ export class QuestComponent implements OnInit {
   secondNumber = Math.floor(Math.random() * (100-this.firstNumber));
   statistics: number = 0;
   butAvailable: boolean = true;
+  bonus: number = 1;
 
   answ: Answ=new Answ(); 
    
@@ -31,15 +32,18 @@ export class QuestComponent implements OnInit {
     if (this.signId == 1){
       this.sign = 'Сложи 2 числа: ';
       if (userSign == 2){
+        this.bonus = 1;
         this.firstNumber = Math.floor(Math.random() * 80);
         this.secondNumber = Math.floor(Math.random() * (100-this.firstNumber));
       } else{
+        this.bonus = 5;
         this.firstNumber = Math.floor(Math.random() * 800);
         this.secondNumber = Math.floor(Math.random() * (1000-this.firstNumber));
       };
     } 
     else {
       this.sign = 'Вычти из первого числа второе: ';
+      this.bonus = 5;
       if (userSign == 2){
         this.firstNumber = Math.floor(Math.random() * 99);
         this.secondNumber = this.firstNumber-Math.floor(Math.random() * (this.firstNumber));
@@ -63,11 +67,12 @@ export class QuestComponent implements OnInit {
                 (data: Resp) => {
                   this.receivedResp=data; 
                   this.done=true;
-                  this.timeoutFunc(3000);                        
+                  this.timeoutFunc(3000);
+                  this.getPoints();      
                 },
                 error => console.log(error)
             );
-     } else if (this.signId == 2){
+     } else if (this.signId == 2){  //проверка вычитания
       this.receivedResp = this.checkSub(one, two, answ.num);
       // console.log( this.receivedResp );
       this.done=true;
@@ -96,6 +101,8 @@ export class QuestComponent implements OnInit {
       resp.check = "Правильно!";
       resp.checkID = true;
       resp.cssSet = "truetype";
+      this.httpService.setPoints(10);
+      this.getPoints();   
     } else{
       resp.check = "Не верно!";
       resp.checkID = false;
@@ -120,7 +127,18 @@ export class QuestComponent implements OnInit {
     },time,[]);
  }
 
+  getPoints(){
+    this.httpService.getPoints()
+            .subscribe(
+                (data: number) => {
+                  this.receivedResp.points=data;                     
+                },
+                error => console.log(error)
+            );
+  }
+
   ngOnInit() {
+    this.getPoints();
   }
 
 }

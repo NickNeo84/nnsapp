@@ -8,7 +8,7 @@ export class HttpService{
   
     constructor(private http: HttpClient){ }
       
-    postData(answ: Answ, first: number, second: number){         
+    postData(answ: Answ, first: number, second: number, bonus: number = 1){         
         const body = {answ: answ.num, one: first, two: second};
         // console.log(body);
         return this.http.post('/test', body); 
@@ -22,5 +22,14 @@ export class HttpService{
     postTextNumber(num: number){
         const body = {'num':num};
         return this.http.post('/textNum', body);
+    }
+
+    setPoints(points: number){
+        var body = {'points': points};
+        return this.http.post('/setPoints', body);
+    }
+
+    getPoints(){
+        return this.http.get('/getPoints');
     }
 }

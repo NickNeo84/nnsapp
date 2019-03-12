@@ -7,6 +7,8 @@ const parseNumber = require('_helpers/parse-number');
 var numbersText = require('./numbers.json');
 
 var query = require('./_helpers/conectDB').query;
+var setPoints = require('./_helpers/setPoints').setPoints;
+var getPoints = require('./_helpers/setPoints').getPoints;
 
 module.exports = function (app) {
 
@@ -40,19 +42,17 @@ app.post('/test', function (req, res) {
     if (answ==req.body.answ){
         check = "Правильно!";
         checkID= true;
-        cssSet= "truetype";        
+        cssSet= "truetype";
+        setPoints(5, user);        
     } else{
         check = "Не верно!";
         cssSet = "falsetype";
         checkID = false;
     }
     
-    query('select points from users where id = ?', [user]).then(function (result) {
+    getPoints(user).then(function(result){
         // здесь код будет выполнятся после запроса
-        // console.log('Result');
-        // console.log(result);
-        var point = result[0].points;
-        res.send({'check':check, 'checkID':checkID, 'cssSet':cssSet, 'points':point});
+        res.send({'check':check, 'checkID':checkID, 'cssSet':cssSet, 'points':result});
     }).catch(function (err) {
         // здесь будет сообщение об ошибке
         console.log('Error');
@@ -61,7 +61,7 @@ app.post('/test', function (req, res) {
 
   });
 
-  app.post('/num', function (req, res) {
+    app.post('/num', function (req, res) {
 
         var number = ''+req.body.num;
         var numb = parseNumber(number, 0);      
@@ -70,7 +70,7 @@ app.post('/test', function (req, res) {
         res.send(numb);
         // console.log(numbersText.units);
        
-      });
+    });
 
    app.post('/textNum', function (req, res) {
 
@@ -80,37 +80,49 @@ app.post('/test', function (req, res) {
         var handred = +parseNumber(number,3); 
         var textNumber = '';
 
-     console.log(unit+' '+decade+' '+handred);
-    
-    for(var attributename in numbersText.handreds){
-        if (attributename == handred){
-            textNumber += numbersText.handreds[attributename];
-        }
-    }
-    if(decade == 1){
-        for(var attributename in numbersText.secDec){
+        //  console.log(unit+' '+decade+' '+handred);
+        
+        for(var attributename in numbersText.handreds){
+            if (attributename == handred){
+                textNumber += numbersText.handreds[attributename];
+            };
+        };
+        if(decade == 1){
+            for(var attributename in numbersText.secDec){
+                if (attributename == unit){
+                    textNumber += ' '+numbersText.secDec[attributename];
+                };
+            };
+        } else {
+            for(var attributename in numbersText.decades){
+                if (attributename == decade){
+                    textNumber += ' '+numbersText.decades[attributename];
+                };
+        };
+
+        
+            for(var attributename in numbersText.units){
             if (attributename == unit){
-                textNumber += ' '+numbersText.secDec[attributename];
-            }
-        }
-    } else {
-        for(var attributename in numbersText.decades){
-            if (attributename == decade){
-                textNumber += ' '+numbersText.decades[attributename];
-            }
-    }
-
-    
-        for(var attributename in numbersText.units){
-        if (attributename == unit){
-            textNumber += ' '+numbersText.units[attributename];
-        }
-    }
-    }
+                textNumber += ' '+numbersText.units[attributename];
+            };
+        };
+    };
     
     
 
-    console.log(textNumber);
+    // console.log(textNumber);
         res.send({'num':textNumber});
-      });   
+    });
+      
+    app.post('/setPoints', function (req, res) {
+         setPoints(req.body.points, req.user.sub);
+    });
+
+    app.get('/getPoints', function (req, res) {
+        getPoints(req.user.sub).then(function(result){
+            res.send({result});
+        }).catch(function (err) {
+            console.log(err);
+        });
+   });
 }
