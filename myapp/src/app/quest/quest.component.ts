@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {Resp} from '../resp';
 import {HttpService} from '../http.service';
 import {Answ} from '../answ';
+import {RespNumber} from '../respNumbers';
 
 @Component({
   selector: 'app-quest',
@@ -20,7 +21,7 @@ export class QuestComponent implements OnInit {
   secondNumber = Math.floor(Math.random() * (100-this.firstNumber));
   statistics: number = 0;
   butAvailable: boolean = true;
-  bonus: number = 1;
+  bonus: number = 1; 
 
   answ: Answ=new Answ(); 
    
@@ -128,16 +129,19 @@ export class QuestComponent implements OnInit {
  }
 
   getPoints(){
+    console.log("getPoints");
     this.httpService.getPoints()
-            .subscribe(
-                (data: number) => {
-                  this.receivedResp.points=data;                     
+            .subscribe((data:RespNumber) => {
+              console.log(data); 
+                  this.receivedResp.points=data.result;  // тут ошибка
+                  console.log(data.result);                   
                 },
                 error => console.log(error)
             );
   }
 
   ngOnInit() {
+    console.log("onInit");
     this.getPoints();
   }
 
