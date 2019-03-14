@@ -22,6 +22,7 @@ export class QuestComponent implements OnInit {
   statistics: number = 0;
   butAvailable: boolean = true;
   bonus: number = 1; 
+  points: number;
 
   answ: Answ=new Answ(); 
    
@@ -132,16 +133,14 @@ export class QuestComponent implements OnInit {
     console.log("getPoints");
     this.httpService.getPoints()
             .subscribe((data:RespNumber) => {
-              console.log(data); 
-                  this.receivedResp.points=data.result;  // тут ошибка
-                  console.log(data.result);                   
+                  this.points=data.result;  // тут ошибка                  
                 },
                 error => console.log(error)
             );
   }
 
   ngOnInit() {
-    console.log("onInit");
+    // console.log("onInit");
     this.getPoints();
   }
 

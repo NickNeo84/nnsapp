@@ -50,14 +50,16 @@ app.post('/test', function (req, res) {
         checkID = false;
     }
     
-    getPoints(user).then(function(result){
-        // здесь код будет выполнятся после запроса
-        res.send({'check':check, 'checkID':checkID, 'cssSet':cssSet, 'points':result});
-    }).catch(function (err) {
-        // здесь будет сообщение об ошибке
-        console.log('Error');
-        console.log(err);
-    });
+    res.send({'check':check, 'checkID':checkID, 'cssSet':cssSet});
+
+    // getPoints(user).then(function(result){
+    //     // здесь код будет выполнятся после запроса
+    //     res.send({'check':check, 'checkID':checkID, 'cssSet':cssSet});
+    // }).catch(function (err) {
+    //     // здесь будет сообщение об ошибке
+    //     console.log('Error');
+    //     console.log(err);
+    // });
 
   });
 

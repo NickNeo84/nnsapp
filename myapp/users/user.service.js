@@ -7,16 +7,12 @@ var query = require('../_helpers/conectDB').query;
 // users = [{ id: 1, username: 'test', password: 'test', firstName: 'Test', lastName: 'User' }];
  var users = [];
 
-function getUsers(){
-    query('select * from users', []).then(function (result) {
+async function getUsers(){
+    return query('select * from users', []).then(function (result) {
         // здесь код будет выполнятся после запроса
-        // console.log(result);
         var string=JSON.stringify(result);
-        // console.log('>> string: ', string );
         var json =  JSON.parse(string);
-        // console.log(json);
-        users = json;
-       
+        users = json;        
     }).catch(function (err) {
         // здесь будет сообщение об ошибке
         console.log('Error');
@@ -24,14 +20,13 @@ function getUsers(){
     });
 }
 
-
 module.exports = {
     authenticate,
     getAll
 };
 
 async function authenticate({ username, password }) { 
-    await getUsers();   
+    let a = await getUsers();
     const user = users.find(u => u.username === username && u.password === password);
     if (user) {
         const token = jwt.sign({ sub: user.id }, config.secret);
@@ -44,7 +39,7 @@ async function authenticate({ username, password }) {
 }
 
 async function getAll() {
-    await getUsers(); 
+    let a = await getUsers(); 
     return users.map(u => {
         const { password, ...userWithoutPassword } = u;
         return userWithoutPassword;
