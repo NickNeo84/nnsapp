@@ -43,7 +43,7 @@ app.post('/test', function (req, res) {
         check = "Правильно!";
         checkID= true;
         cssSet= "truetype";
-        setPoints(5, user);        
+        setPoints(req.body.bonus, user);        
     } else{
         check = "Не верно!";
         cssSet = "falsetype";

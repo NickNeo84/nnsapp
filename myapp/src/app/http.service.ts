@@ -9,7 +9,7 @@ export class HttpService{
     constructor(private http: HttpClient){ }
       
     postData(answ: Answ, first: number, second: number, bonus: number = 1){         
-        const body = {answ: answ.num, one: first, two: second};
+        const body = {answ: answ.num, one: first, two: second, bonus: bonus};
         // console.log(body);
         return this.http.post('/test', body); 
     }

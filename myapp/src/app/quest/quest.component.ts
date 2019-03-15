@@ -64,7 +64,7 @@ export class QuestComponent implements OnInit {
   answer(answ: Answ, one: number, two: number){
     this.butAvailable = false;
     if (this.signId == 1){
-    this.httpService.postData(answ, one, two)
+    this.httpService.postData(answ, one, two, this.bonus)
             .subscribe(
                 (data: Resp) => {
                   this.receivedResp=data; 
@@ -103,7 +103,7 @@ export class QuestComponent implements OnInit {
       resp.check = "Правильно!";
       resp.checkID = true;
       resp.cssSet = "truetype";
-      this.httpService.setPoints(10);
+      this.httpService.setPoints(this.bonus);
       this.getPoints();   
     } else{
       resp.check = "Не верно!";
